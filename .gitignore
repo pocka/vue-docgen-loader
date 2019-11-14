@@ -1,0 +1,12 @@
+# Node.js/npm
+node_modules
+*.tgz
+yarn.lock
+
+# Project
+lib
+
+# Common
+tmp
+cache
+*.log

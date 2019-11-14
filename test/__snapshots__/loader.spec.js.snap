@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Injects docgen result as component.options.__docgenInfo 1`] = `
+Object {
+  "description": "",
+  "displayName": "basic-sfc",
+  "events": Object {},
+  "methods": Array [],
+  "props": Object {
+    "foo": Object {
+      "defaultValue": Object {
+        "func": false,
+        "value": "'bar'",
+      },
+      "description": "Description of foo.",
+      "name": "foo",
+      "required": "",
+      "tags": Object {},
+      "type": Object {
+        "name": "string",
+      },
+    },
+  },
+  "slots": Object {},
+  "tags": Object {},
+}
+`;
