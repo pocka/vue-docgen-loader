@@ -54,6 +54,23 @@ module.exports = {
 }
 ```
 
+## Options
+
+You can pass options for vue-docgen-api through `docgenOptions`.
+
+```js
+{
+  test: /\.vue$/,
+    loader: 'vue-docgen-loader',
+    options: {
+      docgenOptions: {
+        // options for vue-docgen-api...
+      }
+    },
+    enforce: 'post'
+}
+```
+
 ## Contributing
 
 Please read our contributing guidelines.
