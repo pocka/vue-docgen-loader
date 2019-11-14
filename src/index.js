@@ -32,8 +32,7 @@ module.exports = function(content, map) {
   } catch (e) {
     if (e instanceof Error) {
       e.message =
-        '[storybook-addon-vue-info/loader] failed to parse SFC with docgen-api: ' +
-        e.message
+        '[vue-docgen-loader] failed to parse SFC with docgen-api: ' + e.message
     }
     this.emitWarning(e)
     this.callback(null, content, map)
