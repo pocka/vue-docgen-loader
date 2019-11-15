@@ -19,7 +19,7 @@ $ yarn add -D vue-docgen-loader vue-docgen-api
 ```
 
 Then add the loader to your webpack config file.
-**Please make sure to run the loader at last of the loader chain**.
+**Please make sure to run the loader at the last of the loader chain**.
 
 ```js
 import MyComponent from './my-component.vue'
@@ -45,6 +45,16 @@ module.exports = {
         // and simplicity. For example, you can enable the loader only
         // for development build.
         test: /\.vue$/,
+        use: 'vue-docgen-loader',
+        enforce: 'post'
+      },
+      {
+        // This rule is needed only when you want to apply the loader
+        // for non-SFC components. Please make sure to use the loader
+        // only for Vue components: in this sample, only files imported
+        // with ?vue query will match.
+        test: /\.js$/,
+        resourceQuery: /vue/,
         use: 'vue-docgen-loader',
         enforce: 'post'
       }

@@ -21,6 +21,11 @@ export default fixture => {
           test: /\.vue$/,
           enforce: 'post',
           loader: path.resolve(__dirname, '../src/index.js')
+        },
+        {
+          test: /\.vue.js$/,
+          enforce: 'post',
+          loader: path.resolve(__dirname, '../src/index.js')
         }
       ]
     },
