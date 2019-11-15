@@ -38,7 +38,7 @@ module.exports = async function(content, map) {
     const ident =
       (info.exportName !== 'default' && info.exportName) || 'component'
 
-    const exportStatement = `;(typeof ${ident} === 'function' ? ${ident}.options : ${ident}).__docgenInfo = ${JSON.stringify(
+    const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
       info
     )}\n`
 
