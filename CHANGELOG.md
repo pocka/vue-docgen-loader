@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2019-11-15
+
+### Added
+
+- Add non-SFC support. (PR: [#2](https://github.com/pocka/vue-docgen-loader/pull/2))
+- Support vue-docgen-api@4. (PR: [#2](https://github.com/pocka/vue-docgen-loader/pull/2))
+
 ## [1.0.1] - 2019-11-14
 
 ### Fixed
