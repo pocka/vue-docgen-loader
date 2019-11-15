@@ -19,7 +19,7 @@ $ yarn add -D vue-docgen-loader vue-docgen-api
 ```
 
 Then add the loader to your webpack config file.
-**Please make sure to run the loader at last of the loader chain**.
+**Please make sure to run the loader at the last of the loader chain**.
 
 ```js
 import MyComponent from './my-component.vue'
@@ -51,6 +51,50 @@ module.exports = {
     ]
   },
   plugins: [new VueLoaderPlugin()]
+}
+```
+
+If you want to apply this loader to non-SFC files like below, you also need to
+setup a rule for them. This works only with vue-docgen-api >= 4.0.0.
+
+```js
+// my-button.js
+import Vue from 'vue'
+
+export const MyButton = Vue.extend({
+  props: {
+    foo: {
+      type: String
+    }
+  },
+  template: '<button/>'
+})
+```
+
+```js
+// other.js
+import MyButton from './my-button.js?component'
+```
+
+```js
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      // Please make sure to apply the loader only for Vue components: In this
+      // sample, only modules imported with ?component query will match.
+      //
+      // IMPORTANT!
+      // Do not use ?vue query if you're using vue-loader. It will sliently inject
+      // .js?vue rule into rules array and it breaks the module.
+      {
+        test: /\.js$/,
+        resourceQuery: /component/,
+        use: 'vue-docgen-loader',
+        enforce: 'post'
+      }
+    ]
+  }
 }
 ```
 
