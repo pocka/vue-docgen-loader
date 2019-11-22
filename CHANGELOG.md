@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2019-11-22
+
+### Fixed
+
+- Fix typo in peer dependency. (PR: [#3](https://github.com/pocka/vue-docgen-loader/pull/3))
+
 ## [1.1.0] - 2019-11-15
 
 ### Added
