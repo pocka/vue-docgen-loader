@@ -54,7 +54,7 @@
     "webpack": "^4.41.2"
   },
   "peerDependencies": {
-    "vue-dogen-api": "^3.26.0",
+    "vue-docgen-api": "^3.26.0",
     "webpack": ">=4"
   },
   "scripts": {
