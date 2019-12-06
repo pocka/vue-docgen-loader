@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2019-12-06
+
+### Added
+
+- Add support for parsing multiple exports. (PR: [#4](https://github.com/pocka/vue-docgen-loader/pull/4))
+
+### Fixed
+
+- Fix peer dependency's unnecessarily strict version. (PR: [#4](https://github.com/pocka/vue-docgen-loader/pull/4))
+
 ## [1.1.1] - 2019-11-22
 
 ### Fixed
