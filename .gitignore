@@ -7,6 +7,6 @@ yarn.lock
 lib
 
 # Common
-tmp
+.tmp-*
 cache
 *.log

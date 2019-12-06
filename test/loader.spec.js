@@ -1,4 +1,7 @@
 import compiler from './compiler'
+import { setup, renderComponent } from './runtime'
+
+setup()
 
 it('Injects docgen result as __docgenInfo property', async () => {
   const stats = await compiler('./fixtures/basic-sfc.vue')
@@ -21,6 +24,8 @@ it('Injects docgen result for non-SFC', async () => {
 
   expect(output).toMatch(docgenPattern)
   expect(JSON.parse(output.match(docgenPattern)[1])).toMatchSnapshot()
+
+  await renderComponent(output, fixture, mod => mod.MyButton)
 })
 
 it('Injects docgen result non-SFC with multiple exports', async () => {
@@ -41,4 +46,9 @@ it('Injects docgen result non-SFC with multiple exports', async () => {
   expect(output).toMatch(match2)
   expect(JSON.parse(output.match(match1)[1])).toMatchSnapshot()
   expect(JSON.parse(output.match(match2)[1])).toMatchSnapshot()
+
+  await Promise.all([
+    renderComponent(output, fixture, mod => mod.MyButton1),
+    renderComponent(output, fixture, mod => mod.MyButton2)
+  ])
 })
