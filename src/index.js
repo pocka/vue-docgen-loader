@@ -18,6 +18,7 @@ module.exports = async function(content, map) {
   const ext = this.resourcePath
     .replace(/^[\s\S]*\.([^.]+)$/, '$1')
     .toLowerCase()
+
   const isSFC = ext === 'vue'
 
   try {
@@ -28,7 +29,7 @@ module.exports = async function(content, map) {
     // vue-loader, we need to read file to get the source code.
     const infoOrPromise = isSFC
       ? docgen.parse(this.resourcePath, options.docgenOptions)
-      : docgen.parseMulti(this.resourcePath, options.docgenOptions)
+      : attemptMultiParse(content, this.resourcePath, options.docgenOptions)
 
     // `parse` is async since vue-docgen-api@4.
     const allInfo =
@@ -57,4 +58,9 @@ module.exports = async function(content, map) {
     this.emitWarning(e)
     callback(null, content, map)
   }
+}
+
+function attemptMultiParse(content, path, options) {
+    if(docgen.parseMulti) return docgen.parseMulti(path, options);
+    else return docgen.parseSource(content, path, options);
 }
