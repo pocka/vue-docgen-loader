@@ -23,30 +23,7 @@ Object {
 }
 `;
 
-exports[`Injects docgen result for non-SFC with default exports 1`] = `
-Object {
-  "description": "",
-  "displayName": "basicDefault.vue",
-  "exportName": "default",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
-        "func": false,
-        "value": "-1",
-      },
-      "description": "Foo the number.",
-      "name": "foo",
-      "tags": Object {},
-      "type": Object {
-        "name": "number",
-      },
-    },
-  ],
-  "tags": Object {},
-}
-`;
-
-exports[`Injects docgen result for non-SFC with named exports 1`] = `
+exports[`Injects docgen result for non-SFC 1`] = `
 Object {
   "description": "",
   "displayName": "basic.vue",
@@ -95,50 +72,6 @@ exports[`Injects docgen result non-SFC with multiple exports 2`] = `
 Object {
   "description": "",
   "exportName": "MyButton2",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
-        "func": false,
-        "value": "-1",
-      },
-      "description": "Foo the number.",
-      "name": "foo",
-      "tags": Object {},
-      "type": Object {
-        "name": "number",
-      },
-    },
-  ],
-  "tags": Object {},
-}
-`;
-
-exports[`Injects docgen result non-SFC with multiple, mixed, both named and default, exports 1`] = `
-Object {
-  "description": "",
-  "exportName": "MyButton1",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
-        "func": false,
-        "value": "-1",
-      },
-      "description": "Foo the number.",
-      "name": "foo",
-      "tags": Object {},
-      "type": Object {
-        "name": "number",
-      },
-    },
-  ],
-  "tags": Object {},
-}
-`;
-
-exports[`Injects docgen result non-SFC with multiple, mixed, both named and default, exports 2`] = `
-Object {
-  "description": "",
-  "exportName": "default",
   "props": Array [
     Object {
       "defaultValue": Object {
