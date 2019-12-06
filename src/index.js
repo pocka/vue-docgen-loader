@@ -32,18 +32,19 @@ module.exports = async function(content, map) {
       : attemptMultiParse(content, this.resourcePath, options.docgenOptions)
 
     // `parse` is async since vue-docgen-api@4.
-    const allInfo =
-      [].concat(infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise)
+    const allInfo = [].concat(
+      infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise
+    )
 
-    let fullExportStatement = '';
-    for(let i = 0; i < allInfo.length; i++) {
-        const info = allInfo[i];
-        const ident =
+    let fullExportStatement = ''
+    for (let i = 0; i < allInfo.length; i++) {
+      const info = allInfo[i]
+      const ident =
         (info.exportName !== 'default' && info.exportName) || 'component'
-        const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
+      const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
         info
-        )}\n`
-        fullExportStatement += `${exportStatement}`;
+      )}\n`
+      fullExportStatement += `${exportStatement}`
     }
 
     const js = content + '\n' + fullExportStatement
@@ -61,6 +62,6 @@ module.exports = async function(content, map) {
 }
 
 function attemptMultiParse(content, path, options) {
-    if(docgen.parseMulti) return docgen.parseMulti(path, options);
-    else return docgen.parseSource(content, path, options);
+  if (docgen.parseMulti) return docgen.parseMulti(path, options)
+  else return docgen.parseSource(content, path, options)
 }
