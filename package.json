@@ -48,7 +48,7 @@
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "vue": "^2.6.10",
-    "vue-docgen-api": "^4.0.0",
+    "vue-docgen-api": "^4.1.1",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2"
