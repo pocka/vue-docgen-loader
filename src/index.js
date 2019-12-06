@@ -18,6 +18,7 @@ module.exports = async function(content, map) {
   const ext = this.resourcePath
     .replace(/^[\s\S]*\.([^.]+)$/, '$1')
     .toLowerCase()
+
   const isSFC = ext === 'vue'
 
   try {
@@ -28,21 +29,25 @@ module.exports = async function(content, map) {
     // vue-loader, we need to read file to get the source code.
     const infoOrPromise = isSFC
       ? docgen.parse(this.resourcePath, options.docgenOptions)
-      : docgen.parseSource(content, this.resourcePath, options.docgenOptions)
+      : attemptMultiParse(content, this.resourcePath, options.docgenOptions)
 
     // `parse` is async since vue-docgen-api@4.
-    const info =
+    const allInfo = [].concat(
       infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise
+    )
 
-    // The default value 'component' is for SFC(vue-loader)'s export name.
-    const ident =
-      (info.exportName !== 'default' && info.exportName) || 'component'
+    let fullExportStatement = ''
+    for (let i = 0; i < allInfo.length; i++) {
+      const info = allInfo[i]
+      const ident =
+        (info.exportName !== 'default' && info.exportName) || 'component'
+      const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
+        info
+      )}\n`
+      fullExportStatement += `${exportStatement}`
+    }
 
-    const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
-      info
-    )}\n`
-
-    const js = content + '\n' + exportStatement
+    const js = content + '\n' + fullExportStatement
 
     callback(null, js, map)
   } catch (e) {
@@ -54,4 +59,9 @@ module.exports = async function(content, map) {
     this.emitWarning(e)
     callback(null, content, map)
   }
+}
+
+function attemptMultiParse(content, path, options) {
+  if (docgen.parseMulti) return docgen.parseMulti(path, options)
+  else return docgen.parseSource(content, path, options)
 }

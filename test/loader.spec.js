@@ -22,3 +22,23 @@ it('Injects docgen result for non-SFC', async () => {
   expect(output).toMatch(docgenPattern)
   expect(JSON.parse(output.match(docgenPattern)[1])).toMatchSnapshot()
 })
+
+it('Injects docgen result non-SFC with multiple exports', async () => {
+  const fixture = './fixtures/basicMulti.vue.js'
+
+  const stats = await compiler(fixture)
+  const output = stats.toJson().modules.find(mod => mod.name.includes(fixture))
+    .source
+
+  const buttonExports = ['MyButton1', 'MyButton2']
+
+  const createDocgenPattern = exportName =>
+    `^.*${exportName}.*\\.__docgenInfo\\s?=\\s?(\\{[\\s\\S]*?})$`
+  const match1 = new RegExp(createDocgenPattern(buttonExports[0]), 'm')
+  const match2 = new RegExp(createDocgenPattern(buttonExports[1]), 'm')
+
+  expect(output).toMatch(match1)
+  expect(output).toMatch(match2)
+  expect(JSON.parse(output.match(match1)[1])).toMatchSnapshot()
+  expect(JSON.parse(output.match(match2)[1])).toMatchSnapshot()
+})
