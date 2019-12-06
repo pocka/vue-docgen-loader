@@ -29,6 +29,13 @@ export async function renderComponent(
 
   const mod = require(filepath)
 
+  const Component = getComponent(mod)
+
   // Make sure the transformed code works
-  await render(getComponent(mod))
+  await render(Component)
+
+  // Does the component have docgen info?
+  expect(Component).toHaveProperty('options.__docgenInfo')
+
+  return Component
 }
