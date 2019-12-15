@@ -1,11 +1,9 @@
-name: Publish package
+name: Publish beta package
 
 on:
   push:
     tags:
-      - v*
-      - '!v*-alpha*'
-      - '!v*-beta*'
+      - 'v*-beta*'
 
 jobs:
   publish:
@@ -26,6 +24,6 @@ jobs:
       - name: Publish package
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
-          npm publish
+          npm publish --tag beta
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
