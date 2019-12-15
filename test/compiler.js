@@ -3,7 +3,7 @@ import path from 'path'
 import VueLoaderPlugin from 'vue-loader/lib/plugin'
 import webpack from 'webpack'
 
-export default fixture => {
+export default (fixture, options = {}) => {
   const compiler = webpack({
     context: __dirname,
     entry: `./${fixture}`,
@@ -20,12 +20,14 @@ export default fixture => {
         {
           test: /\.vue$/,
           enforce: 'post',
-          loader: path.resolve(__dirname, '../src/index.js')
+          loader: path.resolve(__dirname, '../src/index.js'),
+          options
         },
         {
           test: /\.vue.js$/,
           enforce: 'post',
-          loader: path.resolve(__dirname, '../src/index.js')
+          loader: path.resolve(__dirname, '../src/index.js'),
+          options
         }
       ]
     },

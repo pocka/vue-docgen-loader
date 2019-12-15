@@ -5,6 +5,10 @@ const qs = require('querystring')
 
 const inject = require('./inject')
 
+const defaultOptions = {
+  injectAt: '__docgenInfo'
+}
+
 module.exports = async function(content, map) {
   const callback = this.async()
   const queries = qs.parse(this.resourceQuery.slice(1))
@@ -24,7 +28,10 @@ module.exports = async function(content, map) {
   const isSFC = ext === 'vue'
 
   try {
-    const options = clone(loaderUtils.getOptions(this)) || {}
+    const options = {
+      ...defaultOptions,
+      ...(clone(loaderUtils.getOptions(this)) || {})
+    }
 
     // For SFCs, we can't use docgen.parseSource because the loader runs *after*
     // vue-loader. Since what we get in `content` is the code transpiled by
@@ -38,7 +45,7 @@ module.exports = async function(content, map) {
       infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise
     )
 
-    callback(null, inject(content, allInfo), map)
+    callback(null, inject(content, allInfo, options.injectAt), map)
   } catch (e) {
     if (e instanceof Error) {
       e.message =

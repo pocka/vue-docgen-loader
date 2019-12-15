@@ -100,7 +100,7 @@ module.exports = {
 
 ## Options
 
-You can pass options for vue-docgen-api through `docgenOptions`.
+You can pass options for vue-docgen-api through `docgenOptions` and specify the property name the loader inject docgen result at.
 
 ```js
 {
@@ -109,7 +109,9 @@ You can pass options for vue-docgen-api through `docgenOptions`.
     options: {
       docgenOptions: {
         // options for vue-docgen-api...
-      }
+      },
+      // Injected property name
+      injectAt: '__docgenInfo' // default
     },
     enforce: 'post'
 }

@@ -21,7 +21,8 @@ export function setup() {
 export async function renderComponent(
   code,
   filename,
-  getComponent = mod => mod.default
+  getComponent = mod => mod.default,
+  injectAt = '__docgenInfo'
 ) {
   const filepath = path.resolve(tmpDir, path.basename(filename))
 
@@ -35,7 +36,7 @@ export async function renderComponent(
   await render(Component)
 
   // Does the component have docgen info?
-  expect(Component).toHaveProperty('__docgenInfo')
+  expect(Component).toHaveProperty(injectAt)
 
   return Component
 }

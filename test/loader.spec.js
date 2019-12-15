@@ -52,3 +52,15 @@ it('Injects docgen result for default-exported non-SFC', async () => {
 
   expect(Component.__docgenInfo).toMatchSnapshot()
 })
+
+it('Specify property name to inject docgen info at', async () => {
+  const fixture = './fixtures/injectAt.vue.js'
+
+  const stats = await compiler(fixture, {
+    injectAt: '__DOCGEN__'
+  })
+  const output = stats.toJson().modules.find(mod => mod.name.includes(fixture))
+    .source
+
+  await renderComponent(output, fixture, mod => mod.MyButton, '__DOCGEN__')
+})

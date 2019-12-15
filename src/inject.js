@@ -4,9 +4,10 @@ const jscodeshift = require('jscodeshift')
  * Inject docgen results into components.
  * @param content {string} - JS source code
  * @param infoList {object[]} - A list of docgen result
+ * @param injectAt {string} - Property name to inject docgen info
  * @return {string} - source code with docgen info
  */
-const inject = (content, infoList) => {
+const inject = (content, infoList, injectAt) => {
   // In order to inject info object to Component, we need to assign default
   // exported expression to a variable.
   const [normalizedCode, defaultExportAltName] = reDeclareDefaultExport(
@@ -21,7 +22,7 @@ const inject = (content, infoList) => {
           ? defaultExportAltName
           : info.exportName
 
-      return `${name}.__docgenInfo = ${JSON.stringify(info)}`
+      return `${name}.${injectAt} = ${JSON.stringify(info)}`
     })
     .join('\n')
 
