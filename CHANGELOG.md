@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix inconsistent injection. (PR: [#8](https://github.com/pocka/vue-docgen-loader/pull/8))
+- Fix incorrect injection for default-exported component. (PR: [#8](https://github.com/pocka/vue-docgen-loader/pull/8))
+
 ## [1.2.0] - 2019-12-06
 
 ### Added
