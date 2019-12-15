@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-const MyButton = Vue.extend({
+export default Vue.extend({
   props: {
     /**
      * Foo the number.
@@ -12,5 +12,3 @@ const MyButton = Vue.extend({
   },
   template: '<span>{{foo}}</span>'
 })
-
-export { MyButton }

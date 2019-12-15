@@ -35,7 +35,7 @@ export async function renderComponent(
   await render(Component)
 
   // Does the component have docgen info?
-  expect(Component).toHaveProperty('options.__docgenInfo')
+  expect(Component).toHaveProperty('__docgenInfo')
 
   return Component
 }

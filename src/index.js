@@ -3,6 +3,8 @@ const docgen = require('vue-docgen-api')
 const loaderUtils = require('loader-utils')
 const qs = require('querystring')
 
+const inject = require('./inject')
+
 module.exports = async function(content, map) {
   const callback = this.async()
   const queries = qs.parse(this.resourceQuery.slice(1))
@@ -36,20 +38,7 @@ module.exports = async function(content, map) {
       infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise
     )
 
-    let fullExportStatement = ''
-    for (let i = 0; i < allInfo.length; i++) {
-      const info = allInfo[i]
-      const ident =
-        (info.exportName !== 'default' && info.exportName) || 'component'
-      const exportStatement = `;(${ident}.options = ${ident}.options || {}).__docgenInfo = ${JSON.stringify(
-        info
-      )}\n`
-      fullExportStatement += `${exportStatement}`
-    }
-
-    const js = content + '\n' + fullExportStatement
-
-    callback(null, js, map)
+    callback(null, inject(content, allInfo), map)
   } catch (e) {
     if (e instanceof Error) {
       e.message =

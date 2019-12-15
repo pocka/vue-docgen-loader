@@ -22,7 +22,7 @@ it('Injects docgen result for non-SFC', async () => {
 
   const Component = await renderComponent(output, fixture, mod => mod.MyButton)
 
-  expect(Component.options.__docgenInfo).toMatchSnapshot()
+  expect(Component.__docgenInfo).toMatchSnapshot()
 })
 
 it('Injects docgen result non-SFC with multiple exports', async () => {
@@ -37,6 +37,18 @@ it('Injects docgen result non-SFC with multiple exports', async () => {
     renderComponent(output, fixture, mod => mod.MyButton2)
   ])
 
-  expect(components[0].options.__docgenInfo).toMatchSnapshot()
-  expect(components[1].options.__docgenInfo).toMatchSnapshot()
+  expect(components[0].__docgenInfo).toMatchSnapshot()
+  expect(components[1].__docgenInfo).toMatchSnapshot()
+})
+
+it('Injects docgen result for default-exported non-SFC', async () => {
+  const fixture = './fixtures/basicDefault.vue.js'
+
+  const stats = await compiler(fixture)
+  const output = stats.toJson().modules.find(mod => mod.name.includes(fixture))
+    .source
+
+  const Component = await renderComponent(output, fixture, mod => mod.default)
+
+  expect(Component.__docgenInfo).toMatchSnapshot()
 })
