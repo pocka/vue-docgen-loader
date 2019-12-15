@@ -23,6 +23,29 @@ Object {
 }
 `;
 
+exports[`Injects docgen result for default-exported non-SFC 1`] = `
+Object {
+  "description": "",
+  "displayName": "basicDefault.vue",
+  "exportName": "default",
+  "props": Array [
+    Object {
+      "defaultValue": Object {
+        "func": false,
+        "value": "-1",
+      },
+      "description": "Foo the number.",
+      "name": "foo",
+      "tags": Object {},
+      "type": Object {
+        "name": "number",
+      },
+    },
+  ],
+  "tags": Object {},
+}
+`;
+
 exports[`Injects docgen result for non-SFC 1`] = `
 Object {
   "description": "",
