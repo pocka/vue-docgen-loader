@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2019-12-19
+
+### Added
+
+- Add `injectAt` option.
+
 ### Fixed
 
 - Fix inconsistent injection. (PR: [#8](https://github.com/pocka/vue-docgen-loader/pull/8))
