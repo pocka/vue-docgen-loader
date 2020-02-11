@@ -4,6 +4,7 @@ const loaderUtils = require('loader-utils')
 const qs = require('querystring')
 
 const inject = require('./inject')
+const { filterDescriptors } = require('./utils')
 
 const defaultOptions = {
   injectAt: '__docgenInfo'
@@ -45,7 +46,15 @@ module.exports = async function(content, map) {
       infoOrPromise instanceof Promise ? await infoOrPromise : infoOrPromise
     )
 
-    callback(null, inject(content, allInfo, options.injectAt), map)
+    const filteredInfo = allInfo.map(info => {
+      return {
+        ...info,
+        props: filterDescriptors(info.props, prop => !isIgnoredProps(prop)),
+        events: filterDescriptors(info.events, ev => !isIgnoredEvent(ev))
+      }
+    })
+
+    callback(null, inject(content, filteredInfo, options.injectAt), map)
   } catch (e) {
     if (e instanceof Error) {
       e.message =
@@ -60,4 +69,16 @@ module.exports = async function(content, map) {
 function attemptMultiParse(content, path, options) {
   if (docgen.parseMulti) return docgen.parseMulti(path, options)
   else return docgen.parseSource(content, path, options)
+}
+
+function isIgnoredProps(propDescriptor) {
+  return propDescriptor.tags && propDescriptor.tags.ignore
+}
+
+function isIgnoredEvent(eventDescriptor) {
+  return (
+    eventDescriptor.tags &&
+    eventDescriptor.tags instanceof Array &&
+    eventDescriptor.tags.find(t => t.title === 'ignore')
+  )
 }

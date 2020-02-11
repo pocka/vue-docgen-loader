@@ -64,3 +64,13 @@ it('Specify property name to inject docgen info at', async () => {
 
   await renderComponent(output, fixture, mod => mod.MyButton, '__DOCGEN__')
 })
+
+it('Should ignore props/events with @ignore JSDoc tag', async () => {
+  const stats = await compiler('./fixtures/ignore.vue')
+  const output = stats.toJson().modules[0].modules[0].source
+
+  const docgenPattern = /\.__docgenInfo\s?=\s?(\{[\s\S]*})/
+
+  expect(output).toMatch(docgenPattern)
+  expect(JSON.parse(output.match(docgenPattern)[1])).toMatchSnapshot()
+})
