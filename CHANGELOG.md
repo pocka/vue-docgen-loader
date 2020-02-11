@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-02-12
+
+### Added
+
+- Support `@ignore` JSDoc tag for props and events (PR: [#10](https://github.com/pocka/vue-docgen-loader/pull/10)).
+
 ## [1.3.0] - 2019-12-19
 
 ### Added
