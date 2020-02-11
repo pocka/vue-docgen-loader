@@ -62,7 +62,7 @@
     "webpack": ">=4"
   },
   "scripts": {
-    "build": "babel src/ --out-dir lib/",
+    "build": "babel src/ --out-dir lib/ --ignore '**/*.spec.js'",
     "clean": "rimraf lib/",
     "format": "prettier --ignore-path .gitignore --write './**/*.{js,json,md}'",
     "lint": "prettier --ignore-path .gitignore --list-different './**/*.{js,json,md}'",
