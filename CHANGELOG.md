@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2020-02-22
+
+### Added
+
+- Support `@ignore` JSDoc tag for slots (PR: [#12](https://github.com/pocka/vue-docgen-loader/pull/12)).
+
 ## [1.4.0] - 2020-02-12
 
 ### Added
