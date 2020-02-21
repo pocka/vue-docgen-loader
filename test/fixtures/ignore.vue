@@ -37,7 +37,7 @@ export default {
 <template>
   <div>
     <!--
-      @slot Slots can't be ignored for now.
+      @slot This must be ignored.
       @ignore
     -->
     <slot />
