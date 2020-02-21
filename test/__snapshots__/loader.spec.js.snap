@@ -132,12 +132,7 @@ Object {
       },
     },
   ],
-  "slots": Array [
-    Object {
-      "description": "Slots can't be ignored for now.",
-      "name": "default",
-    },
-  ],
+  "slots": Array [],
   "tags": Object {},
 }
 `;

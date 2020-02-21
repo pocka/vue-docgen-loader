@@ -49,8 +49,12 @@ module.exports = async function(content, map) {
     const filteredInfo = allInfo.map(info => {
       return {
         ...info,
-        props: filterDescriptors(info.props, prop => !isIgnoredProps(prop)),
-        events: filterDescriptors(info.events, ev => !isIgnoredEvent(ev))
+        props: filterDescriptors(
+          info.props,
+          prop => !isIgnoredDescriptor(prop)
+        ),
+        events: filterDescriptors(info.events, ev => !isIgnoredEvent(ev)),
+        slots: filterDescriptors(info.slots, slot => !isIgnoredDescriptor(slot))
       }
     })
 
@@ -71,8 +75,8 @@ function attemptMultiParse(content, path, options) {
   else return docgen.parseSource(content, path, options)
 }
 
-function isIgnoredProps(propDescriptor) {
-  return propDescriptor.tags && propDescriptor.tags.ignore
+function isIgnoredDescriptor(descriptor) {
+  return descriptor.tags && descriptor.tags.ignore
 }
 
 function isIgnoredEvent(eventDescriptor) {
