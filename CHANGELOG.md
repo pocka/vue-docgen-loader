@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.1] - 2022-04-10
+
+### Fixed
+
+- Upgrade to [the latest version](https://github.com/facebook/jscodeshift/releases/tag/0.13.1) of `jscodeshift` package, which includes mitigation for a security vulnerability in `colors` package (PR: [#15](https://github.com/pocka/vue-docgen-loader/pull/15)).
+
 ## [1.5.0] - 2020-02-22
 
 ### Added
