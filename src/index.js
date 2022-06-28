@@ -1,7 +1,6 @@
 const clone = require('clone')
 const docgen = require('vue-docgen-api')
 const loaderUtils = require('loader-utils')
-const qs = require('querystring')
 
 const inject = require('./inject')
 const { filterDescriptors } = require('./utils')
@@ -12,7 +11,9 @@ const defaultOptions = {
 
 module.exports = async function(content, map) {
   const callback = this.async()
-  const queries = qs.parse(this.resourceQuery.slice(1))
+  const queries = Object.fromEntries(
+    new URLSearchParams(this.resourceQuery.slice(1))
+  )
 
   // When vue-loader takes an input file (foo.vue), it calls itself multiple times
   // with same file with different queries. If there is 'vue' query, the import is
