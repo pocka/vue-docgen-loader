@@ -3,7 +3,7 @@
   "description": "Vue docgen loader for webpack",
   "version": "1.5.1",
   "engines": {
-    "node": ">= 8.16"
+    "node": ">= 12"
   },
   "keywords": [
     "vue",
