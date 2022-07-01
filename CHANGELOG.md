@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-07-02
+
+### Changed
+
+- **BREAKING**: Bump the minimum supported Node.js version to 12 ([f669d1c](https://github.com/pocka/vue-docgen-loader/commit/f669d1c8bd539ad31c7e8522b3ac9e3b516c04eb)).
+
+### Fixed
+
+- Remove a deprecated `querystring` package from `dependencies` (PR: [#16](https://github.com/pocka/vue-docgen-loader/pull/16)).
+
 ## [1.5.1] - 2022-04-10
 
 ### Fixed
