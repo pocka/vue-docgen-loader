@@ -18,9 +18,7 @@ exports[`Injects docgen result as __docgenInfo property 1`] = `
       },
     },
   ],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basic-sfc.vue",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;
@@ -43,9 +41,7 @@ exports[`Injects docgen result for default-exported non-SFC 1`] = `
       },
     },
   ],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicDefault.vue.js",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;
@@ -68,9 +64,7 @@ exports[`Injects docgen result for non-SFC 1`] = `
       },
     },
   ],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basic.vue.js",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;
@@ -93,9 +87,7 @@ exports[`Injects docgen result non-SFC with multiple exports 1`] = `
       },
     },
   ],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicMulti.vue.js",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;
@@ -118,9 +110,7 @@ exports[`Injects docgen result non-SFC with multiple exports 2`] = `
       },
     },
   ],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicMulti.vue.js",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;
@@ -150,9 +140,7 @@ exports[`Should ignore props/events with @ignore JSDoc tag 1`] = `
     },
   ],
   "slots": [],
-  "sourceFiles": [
-    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/ignore.vue",
-  ],
+  "sourceFiles": undefined,
   "tags": {},
 }
 `;

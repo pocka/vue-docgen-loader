@@ -5,6 +5,13 @@ import { setup, renderComponent } from './runtime'
 
 setup()
 
+function stripSourceFilesFromDocgenInfo(info) {
+  return {
+    ...info,
+    sourceFiles: undefined
+  }
+}
+
 it('Injects docgen result as __docgenInfo property', async () => {
   const stats = await compiler('./fixtures/basic-sfc.vue')
   const output = stats.toJson().modules[0].modules[0].source
@@ -12,7 +19,9 @@ it('Injects docgen result as __docgenInfo property', async () => {
   const docgenPattern = /\.__docgenInfo\s?=\s?(\{[\s\S]*})/
 
   expect(output).toMatch(docgenPattern)
-  expect(JSON.parse(output.match(docgenPattern)[1])).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(JSON.parse(output.match(docgenPattern)[1]))
+  ).toMatchSnapshot()
 })
 
 it('Injects docgen result for non-SFC', async () => {
@@ -24,7 +33,9 @@ it('Injects docgen result for non-SFC', async () => {
 
   const Component = await renderComponent(output, fixture, mod => mod.MyButton)
 
-  expect(Component.__docgenInfo).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(Component.__docgenInfo)
+  ).toMatchSnapshot()
 })
 
 it('Injects docgen result non-SFC with multiple exports', async () => {
@@ -39,8 +50,12 @@ it('Injects docgen result non-SFC with multiple exports', async () => {
     renderComponent(output, fixture, mod => mod.MyButton2)
   ])
 
-  expect(components[0].__docgenInfo).toMatchSnapshot()
-  expect(components[1].__docgenInfo).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(components[0].__docgenInfo)
+  ).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(components[1].__docgenInfo)
+  ).toMatchSnapshot()
 })
 
 it('Injects docgen result for default-exported non-SFC', async () => {
@@ -52,7 +67,9 @@ it('Injects docgen result for default-exported non-SFC', async () => {
 
   const Component = await renderComponent(output, fixture, mod => mod.default)
 
-  expect(Component.__docgenInfo).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(Component.__docgenInfo)
+  ).toMatchSnapshot()
 })
 
 it('Specify property name to inject docgen info at', async () => {
@@ -74,5 +91,7 @@ it('Should ignore props/events with @ignore JSDoc tag', async () => {
   const docgenPattern = /\.__docgenInfo\s?=\s?(\{[\s\S]*})/
 
   expect(output).toMatch(docgenPattern)
-  expect(JSON.parse(output.match(docgenPattern)[1])).toMatchSnapshot()
+  expect(
+    stripSourceFilesFromDocgenInfo(JSON.parse(output.match(docgenPattern)[1]))
+  ).toMatchSnapshot()
 })
