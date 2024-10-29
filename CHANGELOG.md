@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2024-10-29
+
+### Fixed
+
+- Upgrade to [the latest version](https://github.com/facebook/jscodeshift/releases/tag/v17.0.0) of `jscodeshift` package, which updates/removes vulnerable package versions ([661a26b](https://github.com/pocka/vue-docgen-loader/commit/661a26b98f745e839056044ec1f22ab53259c32e)).
+
 ## [2.0.0] - 2022-07-02
 
 ### Changed
