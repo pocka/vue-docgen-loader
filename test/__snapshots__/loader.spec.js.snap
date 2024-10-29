@@ -1,138 +1,158 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Injects docgen result as __docgenInfo property 1`] = `
-Object {
+{
   "description": "",
   "displayName": "basic-sfc",
   "exportName": "default",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "'bar'",
       },
       "description": "Description of foo.",
       "name": "foo",
-      "type": Object {
+      "type": {
         "name": "string",
       },
     },
   ],
-  "tags": Object {},
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basic-sfc.vue",
+  ],
+  "tags": {},
 }
 `;
 
 exports[`Injects docgen result for default-exported non-SFC 1`] = `
-Object {
+{
   "description": "",
   "displayName": "basicDefault.vue",
   "exportName": "default",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "-1",
       },
       "description": "Foo the number.",
       "name": "foo",
-      "type": Object {
+      "type": {
         "name": "number",
       },
     },
   ],
-  "tags": Object {},
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicDefault.vue.js",
+  ],
+  "tags": {},
 }
 `;
 
 exports[`Injects docgen result for non-SFC 1`] = `
-Object {
+{
   "description": "",
   "displayName": "basic.vue",
   "exportName": "MyButton",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "-1",
       },
       "description": "Foo the number.",
       "name": "foo",
-      "type": Object {
+      "type": {
         "name": "number",
       },
     },
   ],
-  "tags": Object {},
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basic.vue.js",
+  ],
+  "tags": {},
 }
 `;
 
 exports[`Injects docgen result non-SFC with multiple exports 1`] = `
-Object {
+{
   "description": "",
+  "displayName": "MyButton1",
   "exportName": "MyButton1",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "-1",
       },
       "description": "Foo the number.",
       "name": "foo",
-      "type": Object {
+      "type": {
         "name": "number",
       },
     },
   ],
-  "tags": Object {},
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicMulti.vue.js",
+  ],
+  "tags": {},
 }
 `;
 
 exports[`Injects docgen result non-SFC with multiple exports 2`] = `
-Object {
+{
   "description": "",
+  "displayName": "MyButton2",
   "exportName": "MyButton2",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "-1",
       },
       "description": "Foo the number.",
       "name": "foo",
-      "type": Object {
+      "type": {
         "name": "number",
       },
     },
   ],
-  "tags": Object {},
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/basicMulti.vue.js",
+  ],
+  "tags": {},
 }
 `;
 
 exports[`Should ignore props/events with @ignore JSDoc tag 1`] = `
-Object {
+{
   "description": "",
   "displayName": "ignore",
-  "events": Array [
-    Object {
+  "events": [
+    {
       "description": "Not ignored.",
       "name": "qux",
     },
   ],
   "exportName": "default",
-  "props": Array [
-    Object {
-      "defaultValue": Object {
+  "props": [
+    {
+      "defaultValue": {
         "func": false,
         "value": "Infinity",
       },
       "description": "Not ignored.",
       "name": "bar",
-      "type": Object {
+      "type": {
         "name": "number",
       },
     },
   ],
-  "slots": Array [],
-  "tags": Object {},
+  "slots": [],
+  "sourceFiles": [
+    "/Users/pocka/work/github.com/pocka/vue-docgen-loader/test/fixtures/ignore.vue",
+  ],
+  "tags": {},
 }
 `;

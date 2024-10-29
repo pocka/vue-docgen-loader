@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { afterAll, beforeAll, expect } from 'vitest'
 
 import { render } from '@vue/server-test-utils'
 
@@ -28,7 +29,7 @@ export async function renderComponent(
 
   await fs.promises.writeFile(filepath, code)
 
-  const mod = require(filepath)
+  const mod = await import(filepath)
 
   const Component = getComponent(mod)
 

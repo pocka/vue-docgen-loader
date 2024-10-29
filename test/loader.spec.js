@@ -1,3 +1,5 @@
+import { expect, it } from 'vitest'
+
 import compiler from './compiler'
 import { setup, renderComponent } from './runtime'
 
